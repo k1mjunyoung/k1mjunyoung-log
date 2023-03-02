@@ -16,7 +16,6 @@ const PostList: React.FC<Props> = ({ q, posts, tags }) => {
   const currentTag = `${router.query.tag || ``}` || "All"
   const currentOrder = `${router.query.order || ``}` || "desc"
 
-  console.log(posts)
   useEffect(() => {
     setFilteredPosts(() => {
       let filteredPosts = posts
