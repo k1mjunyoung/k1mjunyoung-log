@@ -4,16 +4,14 @@ import {
   Code,
   Collection,
   CollectionRow,
-} from "react-notion-x"
-import { TPost } from "@/src/types"
-import React from "react"
-import PostHeader from "./PostHeader"
-import Footer from "./PostFooter"
-import CommentBox from "./CommentBox"
-import Category from "@components/Category"
+} from 'react-notion-x'
+import CommentBox from '@containers/PostDetail/components/CommentBox'
+import Footer from './components/PostFooter'
+import PostHeader from './components/PostHeader'
+import { TPost } from '@/src/types'
 
 const mapPageUrl = (id: string) => {
-  return "https://www.notion.so/" + id.replace(/-/g, "")
+  return 'https://www.notion.so/' + id.replace(/-/g, '')
 }
 
 type Props = {
@@ -22,22 +20,12 @@ type Props = {
 }
 
 const PostDetail: React.FC<Props> = ({ blockMap, data }) => {
-  const category = (data.category && data.category?.[0]) || undefined
-
   return (
     <div
       className={`m-auto max-w-4xl bg-white dark:bg-zinc-700 rounded-3xl py-12 px-6 shadow-md`}
     >
-      <article className=" m-auto max-w-2xl">
-        {category && (
-          <Category
-            className="mb-2"
-            readOnly={data.status?.[0] === "PublicOnDetail"}
-          >
-            {category}
-          </Category>
-        )}
-        {data.type[0] === "Post" && <PostHeader data={data} />}
+      <article className="m-auto max-w-2xl">
+        <PostHeader data={data} />
         {blockMap && (
           <div className="-mt-4">
             <NotionRenderer
@@ -52,7 +40,7 @@ const PostDetail: React.FC<Props> = ({ blockMap, data }) => {
             />
           </div>
         )}
-        {data.type[0] === "Post" && (
+        {data.type[0] !== 'Page' && (
           <>
             <Footer />
             <CommentBox data={data} />

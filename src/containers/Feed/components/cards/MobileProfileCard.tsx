@@ -1,6 +1,7 @@
 import CONFIG from "site.config"
 import Image from "next/image"
 import React from "react"
+import imageLoader from "@/src/libs/next/imageLoader"
 
 type Props = {
   className?: string
@@ -18,6 +19,7 @@ const MobileProfileCard: React.FC<Props> = () => {
             height={90}
             alt="profile_image"
             className="relative"
+            loader={imageLoader}
           />
           <div className="h-fit dark:text-white">
             <div className=" text-xl  italic font-bold">

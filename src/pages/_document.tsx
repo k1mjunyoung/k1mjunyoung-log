@@ -7,16 +7,54 @@ class MyDocument extends Document {
     return (
       <Html lang={CONFIG.lang}>
         <Head>
-          <link
-            rel="stylesheet"
-            as="font"
-            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css"
-          />
-          <link rel="icon" href="/favicon.ico" />
+          {/* font setting */}
+          <>
+            <link
+              rel="preload"
+              href="/fonts/SourceSerif.var.woff2"
+              as="font"
+              type="font/woff2"
+              crossOrigin="anonymous"
+            />
+            <link
+              rel="preload"
+              href="/fonts/SourceSerif-Italic.var.woff2"
+              as="font"
+              type="font/woff2"
+              crossOrigin="anonymous"
+            />
+          </>
+          {["zh", "ja", "ko"].includes(
+            CONFIG.lang.slice(0, 2).toLocaleLowerCase()
+          ) && (
+            <>
+              <link
+                rel="preconnect"
+                href="https://fonts.gstatic.com"
+                crossOrigin="anonymous"
+              />
+              <link
+                rel="preload"
+                as="style"
+                href={`https://fonts.googleapis.com/css2?family=Noto+Sans+${CJK()}:wght@400;500;700&display=swap`}
+              />
+              <link
+                rel="stylesheet"
+                href={`https://fonts.googleapis.com/css2?family=Noto+Sans+${CJK()}:wght@400;500;700&display=swap`}
+              />
+              <noscript>
+                <link
+                  rel="stylesheet"
+                  href={`https://fonts.googleapis.com/css2?family=Noto+Sans+${CJK()}:wght@400;500;700&display=swap`}
+                />
+              </noscript>
+            </>
+          )}
+          <link rel="icon" href="/avatar.svg" />
           <link
             rel="apple-touch-icon"
             sizes="192x192"
-            href="/apple-touch-icon.png"
+            href="/avatar.svg"
           ></link>
           <link
             rel="alternate"

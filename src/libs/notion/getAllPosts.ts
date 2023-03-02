@@ -1,15 +1,16 @@
 import CONFIG from "site.config"
 import { NotionAPI } from "notion-client"
 import { idToUuid } from "notion-utils"
-import getAllPageIds from "../utils/notion/getAllPageIds"
-import getPageProperties from "../utils/notion/getPageProperties"
+import getAllPageIds from "./getAllPageIds"
+import getPageProperties from "./getPageProperties"
+import filterPublishedPosts from "./filterPublishedPosts"
 import { TPosts } from "@/src/types"
 
 /**
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
 
-export async function getPosts() {
+export async function getAllPosts({ includePages = false }) {
   let id = CONFIG.notionConfig.pageId as string
   const api = new NotionAPI()
   const response = await api.getPage(id)
@@ -43,12 +44,15 @@ export async function getPosts() {
       data.push(properties)
     }
 
+    // remove all the the items doesn't meet requirements
+    const posts = filterPublishedPosts({ posts: data, includePages })
+
     // Sort by date
-    data.sort((a: any, b: any) => {
+    posts.sort((a: any, b: any) => {
       const dateA: any = new Date(a?.date?.start_date || a.createdTime)
       const dateB: any = new Date(b?.date?.start_date || b.createdTime)
       return dateB - dateA
     })
-    return data as TPosts
+    return posts as TPosts
   }
 }

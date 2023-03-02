@@ -1,7 +1,6 @@
 /* NOTION CSS OVERRIDE */
 
 .notion {
-  font-family: Pretendard, Roboto, sans-serif;
   @apply text-gray-600 dark:text-gray-300;
   overflow-wrap: break-word;
 }
@@ -75,6 +74,7 @@ pre[class*="language-"] {
 }
 .notion-quote {
   padding: 0.2em 0.9em;
+  font-size: 1em;
 }
 .notion-collection {
   @apply max-w-full;

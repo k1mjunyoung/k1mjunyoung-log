@@ -1,29 +1,22 @@
-import Detail from "@containers/Detail"
-import { filterPosts } from "@/src/libs/utils/notion"
+import PostDetail from "@containers/PostDetail"
+import { getAllPosts, getPostBlocks } from "@libs/notion"
 import Layout from "@components/Layout"
-import CONFIG from "@/site.config"
-import { NextPageWithLayout } from "@pages/_app"
+import CONFIG from "../../site.config"
+import { NextPageWithLayout } from "./_app"
 import { TPost } from "../types"
-import CustomError from "@containers/CustomError"
-import { getPostBlocks, getPosts } from "@libs/apis"
+import CustomError from "../containers/CustomError"
 
 export async function getStaticPaths() {
-  const posts = await getPosts()
-  const filteredPost = filterPosts(posts, {
-    acceptStatus: ["Public", "PublicOnDetail"],
-    acceptType: ["Paper", "Post", "Page"],
-  })
-
+  const posts = await getAllPosts({ includePages: true })
   return {
-    paths: filteredPost.map((row) => `/${row.slug}`),
+    paths: posts.map((row) => `/${row.slug}`),
     fallback: true,
   }
 }
 
 export async function getStaticProps({ params: { slug } }: any) {
   try {
-    //includePages: true
-    const posts = await getPosts()
+    const posts = await getAllPosts({ includePages: true })
     const post = posts.find((t) => t.slug === slug)
     const blockMap = await getPostBlocks(post?.id!)
 
@@ -44,12 +37,12 @@ type Props = {
   blockMap: any
 }
 
-const DetailPage: NextPageWithLayout<Props> = ({ post, blockMap }) => {
+const PostDetailPage: NextPageWithLayout<Props> = ({ post, blockMap }) => {
   if (!post) return <CustomError />
-  return <Detail blockMap={blockMap} data={post} />
+  return <PostDetail blockMap={blockMap} data={post} />
 }
 
-DetailPage.getLayout = function getlayout(page) {
+PostDetailPage.getLayout = function getlayout(page) {
   const getImage = () => {
     if (page.props?.post.thumbnail) return page.props?.post.thumbnail
     if (CONFIG.ogImageGenerateURL)
@@ -85,4 +78,4 @@ DetailPage.getLayout = function getlayout(page) {
   )
 }
 
-export default DetailPage
+export default PostDetailPage

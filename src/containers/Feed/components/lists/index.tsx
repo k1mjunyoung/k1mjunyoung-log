@@ -1,5 +1,4 @@
-import PostList from "./PostList"
-import TagList from "./TagList"
-import CategoryList from "./CategoryList"
+import PostList from './PostList'
+import TagList from './TagList'
 
-export { PostList, TagList, CategoryList }
+export { PostList, TagList }

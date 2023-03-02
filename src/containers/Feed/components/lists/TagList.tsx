@@ -1,4 +1,4 @@
-import { TTags } from '@customTypes/index'
+import { TTags } from '@custeomTypes/index'
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -9,27 +9,15 @@ type Props = {
 
 const TagList: React.FC<Props> = ({ className, data }) => {
   const router = useRouter()
-  const currentTag = router.query.tag || undefined
+  const currentTag = router.query.tag || 'All'
 
   const handleClickTag = (value: any) => {
-    // delete
-    if (currentTag === value) {
-      router.push({
-        query: {
-          ...router.query,
-          tag: undefined,
-        },
-      })
-    }
-    // add
-    else {
-      router.push({
-        query: {
-          ...router.query,
-          tag: value,
-        },
-      })
-    }
+    router.push({
+      query: {
+        ...router.query,
+        tag: value,
+      },
+    })
   }
 
   return (
@@ -41,7 +29,7 @@ const TagList: React.FC<Props> = ({ className, data }) => {
             key={key}
             className={`text-sm p-1 px-4 my-1 flex-shrink-0 rounded-xl text-gray-500 dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-800 ${
               key === currentTag &&
-              "text-black bg-white dark:bg-zinc-700 hover:bg-white dark:hover:bg-zinc-700"
+              'text-black bg-white dark:bg-zinc-700 hover:bg-white dark:hover:bg-zinc-700'
             }`}
             onClick={() => handleClickTag(key)}
           >
