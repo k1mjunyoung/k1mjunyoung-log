@@ -1,12 +1,10 @@
-import { useState } from 'react'
-
-import * as Cards from './components/cards'
-import * as Lists from './components/lists'
-
-import { TPosts, TTags } from '@custeomTypes/index'
-import SearchInput from './components/SearchInput'
-import PostHeader from './components/Header'
-import Footer from './components/Footer'
+import { useState } from "react"
+import * as Cards from "./components/cards"
+import * as Lists from "./components/lists"
+import { TPosts, TTags } from "@custeomTypes/index"
+import SearchInput from "./components/SearchInput"
+import PostHeader from "./components/Header"
+import Footer from "./components/Footer"
 
 type Props = {
   tags: TTags
@@ -14,11 +12,10 @@ type Props = {
 }
 
 const Feed: React.FC<Props> = ({ tags, posts }) => {
-  const [q, setQ] = useState('')
+  const [q, setQ] = useState("")
 
   return (
     <div className="block md:grid grid-cols-12 gap-6">
-      <Lists.TagList className="hidden lg:block col-span-2" data={tags} />
       <div className="col-span-12 lg:col-span-7">
         <Cards.MobileProfileCard />
         <SearchInput value={q} onChange={(e) => setQ(e.target.value)} />
@@ -27,7 +24,12 @@ const Feed: React.FC<Props> = ({ tags, posts }) => {
         <Lists.PostList q={q} posts={posts} tags={tags} />
         <Footer className="block lg:hidden flex justify-center pb-8" />
       </div>
-      <div className="hidden lg:block lg:col-span-3">
+      <div
+        className="common-no-scroll-bar sticky top-[73px] hidden lg:block lg:col-span-3 overflow-scroll"
+        style={{
+          height: "calc(100vh - 73px)",
+        }}
+      >
         <Cards.ProfileCard />
         <Cards.ServiceCard />
         <Cards.ContactCard />

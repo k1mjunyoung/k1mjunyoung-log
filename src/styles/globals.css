@@ -59,6 +59,14 @@ body::-webkit-scrollbar-thumb {
   background: rgba(45, 170, 219, 0.3);
 }
 
+.common-no-scroll-bar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.common-no-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -90,10 +98,6 @@ body::-webkit-scrollbar-thumb {
   opacity: 1;
   /* opacity: 0; */
   overflow: hidden;
-}
-
-.sticky-nav-full .nav {
-  @apply text-gray-600 dark:text-gray-300;
 }
 
 nav {
