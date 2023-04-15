@@ -2,7 +2,7 @@ import { TPosts, TPostStatus, TPostType } from "@/src/types"
 
 type Options = {
   acceptStatus?: TPostStatus[]
-  acceptType?: TPostType[]
+  acceptType?: string[]
 }
 
 const initialOption: Options = {
