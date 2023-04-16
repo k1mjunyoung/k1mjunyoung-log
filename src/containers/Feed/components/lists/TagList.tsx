@@ -1,4 +1,4 @@
-import { TTags } from "@/src/types"
+import { TTags } from "@customTypes/index"
 import { useRouter } from "next/router"
 import React from "react"
 
@@ -9,15 +9,27 @@ type Props = {
 
 const TagList: React.FC<Props> = ({ className, data }) => {
   const router = useRouter()
-  const currentTag = router.query.tag || "All"
+  const currentTag = router.query.tag || undefined
 
   const handleClickTag = (value: any) => {
-    router.push({
-      query: {
-        ...router.query,
-        tag: value,
-      },
-    })
+    // delete
+    if (currentTag === value) {
+      router.push({
+        query: {
+          ...router.query,
+          tag: undefined,
+        },
+      })
+    }
+    // add
+    else {
+      router.push({
+        query: {
+          ...router.query,
+          tag: value,
+        },
+      })
+    }
   }
 
   return (

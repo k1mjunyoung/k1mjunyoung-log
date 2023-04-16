@@ -53,7 +53,7 @@ const CONFIG = {
     },
   },
   googleSearchConsole: {
-    enable: true,
+    enable: false,
     config: {
       siteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
     },
@@ -64,6 +64,13 @@ const CONFIG = {
       repo: "yoosion030/sion-log",
       "issue-term": "og:title",
       label: "💬 Utterances",
+    },
+  },
+  cusdis: {
+    enable: false,
+    config: {
+      host: "https://cusdis.com",
+      appid: "", // Embed Code -> data-app-id value
     },
   },
   isProd: process.env.VERCEL_ENV === "production", // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)

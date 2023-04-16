@@ -1,43 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@font-face {
-  font-family: "IBM Plex Sans";
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: normal;
-  font-named-instance: "Regular";
-  src: url("/fonts/IBMPlexSansVar-Roman.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "IBM Plex Sans";
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: italic;
-  font-named-instance: "Italic";
-  src: url("/fonts/IBMPlexSansVar-Italic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Source Serif";
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: normal;
-  font-named-instance: "Regular";
-  src: url("/fonts/SourceSerif.var.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Source Serif";
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: italic;
-  font-named-instance: "Italic";
-  src: url("/fonts/SourceSerif-Italic.var.woff2") format("woff2");
-}
 
 html {
+  font-family: Pretendard, Roboto, sans-serif;
   --scrollbarBG: #ffffff00;
   --thumbBG: #b8b8b8;
 }
@@ -74,23 +40,6 @@ body::-webkit-scrollbar-thumb {
   align-items: stretch;
   justify-content: flex-start;
   flex-direction: column;
-}
-
-.sticky-nav {
-  position: sticky;
-  z-index: 10;
-  top: -1px;
-  backdrop-filter: blur(5px);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0, 1);
-  border-bottom-color: transparent;
-}
-
-.remove-sticky {
-  position: unset;
-}
-
-.sticky-nav-full {
-  @apply border-b border-opacity-50 border-gray-200 dark:border-gray-600 dark:border-opacity-50;
 }
 
 .header-name {
@@ -153,14 +102,4 @@ nav {
   .mobile-x-scroll {
     overflow-x: hidden;
   }
-}
-
-.thumbnail img {
-  object-fit: contain !important;
-  position: relative !important;
-  height: auto !important;
-}
-
-.thumbnail span {
-  position: unset !important;
 }

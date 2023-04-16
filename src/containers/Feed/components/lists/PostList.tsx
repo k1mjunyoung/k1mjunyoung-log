@@ -1,19 +1,20 @@
 import PostCard from "@components/PostCard"
-import { TPosts, TTags } from "@/src/types"
+import { TPosts } from "@/src/types"
 import { useRouter } from "next/router"
 import React, { useEffect, useState } from "react"
+import { DEFAULT_CATEGORY } from "@/src/constants"
 
 type Props = {
   q: string
-  tags: TTags
   posts: TPosts
 }
 
-const PostList: React.FC<Props> = ({ q, posts, tags }) => {
+const PostList: React.FC<Props> = ({ q, posts }) => {
   const router = useRouter()
   const [filteredPosts, setFilteredPosts] = useState(posts)
 
-  const currentTag = `${router.query.tag || ``}` || "All"
+  const currentTag = `${router.query.tag || ``}` || undefined
+  const currentCategory = `${router.query.category || ``}` || DEFAULT_CATEGORY
   const currentOrder = `${router.query.order || ``}` || "desc"
 
   useEffect(() => {
@@ -27,9 +28,17 @@ const PostList: React.FC<Props> = ({ q, posts, tags }) => {
       })
 
       // tag
-      if (currentTag !== "All") {
+      if (currentTag) {
         filteredPosts = filteredPosts.filter(
           (post) => post && post.tags && post.tags.includes(currentTag)
+        )
+      }
+
+      // category
+      if (currentCategory !== DEFAULT_CATEGORY) {
+        filteredPosts = filteredPosts.filter(
+          (post) =>
+            post && post.category && post.category.includes(currentCategory)
         )
       }
       // order
@@ -39,7 +48,7 @@ const PostList: React.FC<Props> = ({ q, posts, tags }) => {
 
       return filteredPosts
     })
-  }, [q, currentTag, currentOrder])
+  }, [q, currentTag, currentCategory, currentOrder, setFilteredPosts, posts])
 
   return (
     <>
@@ -48,7 +57,7 @@ const PostList: React.FC<Props> = ({ q, posts, tags }) => {
           <p className="text-gray-500 dark:text-gray-300">Nothing! 😺</p>
         )}
         {filteredPosts.map((post) => (
-          <PostCard key={post.id} post={post} />
+          <PostCard key={post.id} data={post} />
         ))}
       </div>
     </>

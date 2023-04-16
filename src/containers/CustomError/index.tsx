@@ -1,9 +1,8 @@
-import Image from "next/image"
-import React from "react"
-import imageLoader from "@/src/libs/next/imageLoader"
+import Image from 'next/image'
+import React from 'react'
 
 type Props = {
-  errorType?: "NOT_FOUND" | "UNKNOWN"
+  errorType?: 'NOT_FOUND' | 'UNKNOWN'
 }
 
 const CustomError: React.FC<Props> = ({ errorType }) => {
@@ -14,13 +13,7 @@ const CustomError: React.FC<Props> = ({ errorType }) => {
       <div className="py-20 flex flex-col items-center gap-10">
         <div className="text-6xl flex  items-center">
           <div>4</div>
-          <Image
-            src="/images/error.png"
-            width={60}
-            height={60}
-            alt="error"
-            loader={imageLoader}
-          />
+          <Image src="/images/error.png" width={60} height={60} alt="error" />
           <div>4</div>
         </div>
         <div className="text-3xl text-gray-500">Post not found</div>
