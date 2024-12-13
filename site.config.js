@@ -1,12 +1,12 @@
 const CONFIG = {
   // profile setting (required)
   profile: {
-    name: "k1mjunyoung",
-    image: "/avatar.svg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
+    name: "김준영",
+    image: "/avatar.jpg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
     role: "backend developer",
     bio: "A drumming developer",
     email: "me@kimjunyoung.com",
-    linkedin: "",
+    linkedin: "안녕하세요! 주니어 백엔드 개발자 김준영입니다.",
     github: "k1mjunyoung",
     instagram: "",
   },
@@ -18,7 +18,7 @@ const CONFIG = {
   ],
   // blog setting (required)
   blog: {
-    title: "김준영의 기술블로그그",
+    title: "김준영의 기술블로그",
     description: "welcome to morethan-log!",
     scheme: "system", // 'light' | 'dark' | 'system'
   },
