@@ -3,10 +3,10 @@ const CONFIG = {
   profile: {
     name: "김준영",
     image: "/avatar.jpg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
-    role: "backend developer",
-    bio: "A drumming developer",
+    role: "Backend developer",
+    bio: "안녕하세요 백엔드 개발자, 김준영입니다.",
     email: "me@kimjunyoung.com",
-    linkedin: "안녕하세요! 주니어 백엔드 개발자 김준영입니다.",
+    linkedin: "",
     github: "k1mjunyoung",
     instagram: "",
   },
@@ -19,15 +19,16 @@ const CONFIG = {
   // blog setting (required)
   blog: {
     title: "김준영의 기술블로그",
-    description: "welcome to morethan-log!",
+    description: "안녕하세요 백엔드 개발자, 김준영입니다.",
     scheme: "system", // 'light' | 'dark' | 'system'
   },
 
   // CONFIG configration (required)
-  link: "https://morethan-log.vercel.app",
-  since: 2022, // If leave this empty, current year will be used.
+  link: "https://tech.kimjunyoung.com",
+  since: 1998, // If leave this empty, current year will be used.
   lang: "ko-KR", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
-  ogImageGenerateURL: "https://og-image-korean.vercel.app", // The link to generate OG image, don't end with a slash
+  // ogImageGenerateURL: "https://og-image-korean.vercel.app", The link to generate OG image, don't end with a slash
+  ogImageGenerateURL: "https://og-image-korean.vercel.app/%EA%B9%80%EC%A4%80%EC%98%81%EC%9D%98%20%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fmorethan-log.vercel.app%2Favatar.svg", // The link to generate OG image, don't end with a slash
 
   // notion configuration (required)
   notionConfig: {
@@ -36,25 +37,25 @@ const CONFIG = {
 
   // plugin configuration (optional)
   googleAnalytics: {
-    enable: false,
+    enable: true,
     config: {
       measurementId: process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID || "",
     },
   },
   googleSearchConsole: {
-    enable: false,
+    enable: true,
     config: {
       siteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
     },
   },
   naverSearchAdvisor: {
-    enable: false,
+    enable: true,
     config: {
       siteVerification: process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION || "",
     },
   },
   utterances: {
-    enable: false,
+    enable: true,
     config: {
       repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO || "",
       "issue-term": "og:title",
@@ -69,7 +70,7 @@ const CONFIG = {
     },
   },
   isProd: process.env.VERCEL_ENV === "production", // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
-  revalidateTime: 21600 * 7, // revalidate time for [slug], index
+  revalidateTime: 60 * 10, // revalidate time for [slug], index
 }
 
 module.exports = { CONFIG }
