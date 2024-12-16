@@ -12,8 +12,8 @@ const CONFIG = {
   },
   projects: [
      {
-       name: `morethan-log`,
-       href: "https://github.com/morethanmin/morethan-log",
+       name: `마니또 프로젝트`,
+       href: "https://github.com/manitoproject",
      },
   ],
   // blog setting (required)
@@ -25,7 +25,7 @@ const CONFIG = {
 
   // CONFIG configration (required)
   link: "https://tech.kimjunyoung.com",
-  since: 1998, // If leave this empty, current year will be used.
+  // since: 2024, // If leave this empty, current year will be used.
   lang: "ko-KR", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
   // ogImageGenerateURL: "https://og-image-korean.vercel.app", The link to generate OG image, don't end with a slash
   ogImageGenerateURL: "https://og-image-korean.vercel.app/%EA%B9%80%EC%A4%80%EC%98%81%EC%9D%98%20%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fmorethan-log.vercel.app%2Favatar.svg", // The link to generate OG image, don't end with a slash
